@@ -1,0 +1,14 @@
+1. Xem bài assignment trên lms, xác định tất cả các đối tượng được đề cập
+tạo ra các file (mỗi file là 1 class) để định nghĩa các đối tượng đó
+Định nghĩa các thuộc tính của các đối tượng trong bài assignment 
+2. Xem bài assingment, tạo cơ sở dữ liệu vật lý trong phpmyadmin, nhập mỗi bảng ít nhất 5 bản ghi, xuất file sql 
+3. Tìm kiếm 1 template (có thể sử dụng httrack) để kéo giao diện về, code các giao diện phía client
+4. Tải theme adminlte (theme dành cho admin) tạo các giao diện quản lý các module sau:
+- Đăng nhập
+- Dashboard
+- Quản lý users
+- Quản lý Danh mục
+- Quản lý sản phẩm
+- Quản lý Comment
+- Quản lý hóa đơn
+- Quản lý thông tin chung website
