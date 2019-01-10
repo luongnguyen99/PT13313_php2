@@ -20,6 +20,9 @@ class Student extends People{
 
     function dihoc(){}
     function hoclai(){}
+    function diChuyen(){
+        echo "Toi dang di chuyen bang cach di bo";
+    }
 }
 class Staff extends People{   
     var $manv;
@@ -27,8 +30,15 @@ class Staff extends People{
 
     function dilam(){}
     function duoiviec(){}
+    function diChuyen(){
+        echo "Toi dang di chuyen bang xe may";
+    }
 }
-class Security extends Staff{}
+class Security extends Staff{
+    function diChuyen(){
+        echo "Toi dang di chuyen bang xe bus";
+    }
+}
 
 $hoang = new Security();
 $hoang->diChuyen();

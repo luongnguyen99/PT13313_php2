@@ -1,6 +1,5 @@
 <?php
-class Product{
-    var $table = 'products';
+class BaseModel {
     // thuc thi 1 so lenh ngay lap tuc khi thuc the dc tao ra
     // gan gia tri cho danh sach thuoc tinh 
     function __construct(){
@@ -41,8 +40,15 @@ class Product{
         return $stmt->fetchAll();
     }
 }
-$listPros = Product::where('name', 'like', "%Beer%")
-                    ->andWhere('id', '>', 10)
+class Product extends BaseModel{
+    var $table = 'products';
+    
+}
+class User extends BaseModel{
+    var $table = 'users';
+    
+}
+$listPros = User::where('id', '>', "1")
                     ->get();
 
 echo "<pre>";
