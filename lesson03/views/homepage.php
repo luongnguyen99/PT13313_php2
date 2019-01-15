@@ -11,11 +11,13 @@
         <tr>
             <th>ID</th>
             <th>Product Name</th>
+            <th>Category Name</th>
         </tr>
         <?php foreach($products as $item) :?>
             <tr>
                 <td><?= $item->id ?></td>
                 <td><?= $item->name ?></td>
+                <td><?= $item->getCate()->cate_name ?></td>
             </tr>
 
         <?php endforeach; ?>
