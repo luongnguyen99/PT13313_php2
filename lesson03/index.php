@@ -2,6 +2,7 @@
 $url = isset($_GET['url']) ? $_GET['url'] : '/';
 
 require_once "./controllers/HomeController.php";
+require_once "./controllers/ProductController.php";
 switch($url){
     case '/':
         $ctr = new HomeController();
@@ -9,9 +10,10 @@ switch($url){
         break;
     
     case 'detail':
-        $ctr = new HomeController();
-        echo $ctr->detailProduct();
+        $ctr = new ProductController();
+        echo $ctr->index();
         break;
+        
     default:
         echo "404 notfound!";
         break;
