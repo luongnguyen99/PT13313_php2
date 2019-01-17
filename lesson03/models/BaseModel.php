@@ -18,6 +18,16 @@ class BaseModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, get_class($this));
     }
+
+    public static function delete($id)
+    {
+        $model = new static();
+        $sqlQuery = "delete from ". $model->table 
+                    . " where id = $id";
+        $stmt = $model->connect->prepare($sqlQuery);
+        $stmt->execute();
+        return true;
+    }
 }
 
 ?>
