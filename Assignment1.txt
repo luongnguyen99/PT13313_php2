@@ -3,3 +3,5 @@ Sử dụng csdl kaopiz tiến hành các công việc sau:
 - Vẫn các bảng trên tiến hành thực hiện các nhiệm vụ thêm/sửa/xóa
 Yêu cầu sử dụng mô hình MVC và OOP
 => được phép sử dụng tất cả các thư viện css/js
+password => password_hash()
+verify password => password_verify()
