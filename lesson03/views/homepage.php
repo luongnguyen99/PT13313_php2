@@ -11,14 +11,21 @@
         <tr>
             <th>ID</th>
             <th>Product Name</th>
+            <th>Product Image</th>
             <th>Category Name</th>
             <th>
+                <a href="<?= $baseUrl . "product-add" ?>">
+                    Thêm mới
+                </a>
             </th>
         </tr>
         <?php foreach($products as $item) :?>
             <tr>
                 <td><?= $item->id ?></td>
                 <td><?= $item->name ?></td>
+                <td>
+                    <img src="<?= "public/" . $item->image ?>" width="150">
+                </td>
                 <td><?= $item->getCate()->cate_name ?></td>
                 <td>
                     <a href="<?= $baseUrl . "product-remove?id=" . $item->id?>">

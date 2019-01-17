@@ -4,8 +4,7 @@ require_once './models/Category.php';
 class HomeController
 {
     public function index(){
-        $products = Product::where('id', '<', '20')
-                            ->get();
+        $products = Product::all();
         // echo "<pre>";
 
         // var_dump($products);die;
