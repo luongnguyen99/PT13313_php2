@@ -13,6 +13,18 @@ class BaseModel
         return $model;
     }
 
+    public static function find($val){
+        $model = new static();
+        $model->queryBuilder = "select * from " . $model->table 
+                                    . " where id = '$val'";
+        $result = $model->get();
+        if(count($result) > 0){
+            return $result[0];
+        }
+
+        return null;
+    }
+
     public static function all(){
         $model = new static();
         $model->queryBuilder = "select * from " . $model->table;

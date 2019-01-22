@@ -27,7 +27,7 @@ class ProductController
         global $baseUrl;
         $id = $_GET['id'];
         
-        $model = Product::where('id', '=', $id)->first();
+        $model = Product::find($id);
         var_dump($model);die;
         $cates = Category::all();
         include_once './views/product/addForm.php';
