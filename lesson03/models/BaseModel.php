@@ -50,6 +50,7 @@ class BaseModel
         $model = new static();
         $sqlQuery = "delete from ". $model->table 
                     . " where id = $id";
+        var_dump($sqlQuery);die;
         $stmt = $model->connect->prepare($sqlQuery);
         $stmt->execute();
         return true;

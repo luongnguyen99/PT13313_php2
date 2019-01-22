@@ -4,6 +4,7 @@ require_once './models/Category.php';
 class HomeController
 {
     public function index(){
+        global $baseUrl;
         $products = Product::all();
         // echo "<pre>";
 
