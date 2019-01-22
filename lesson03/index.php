@@ -24,6 +24,10 @@ switch($url){
         $ctr = new ProductController();
         echo $ctr->addForm();
         break;
+    case 'product-edit':
+        $ctr = new ProductController();
+        echo $ctr->editForm();
+        break;
     
     case 'product-save-add':
         $ctr = new ProductController();

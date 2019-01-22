@@ -24,6 +24,14 @@ class BaseModel
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_CLASS, get_class($this));
     }
+    public function first(){
+        
+        $result = $this->get();
+        if(count($result) > 0){
+            return $result[0];
+        }
+        return null;
+    }
 
     public static function delete($id)
     {

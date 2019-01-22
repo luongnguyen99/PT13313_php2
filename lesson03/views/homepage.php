@@ -28,6 +28,9 @@
                 </td>
                 <td><?= $item->getCate()->cate_name ?></td>
                 <td>
+                    <a href="<?= $baseUrl . "product-edit?id=" . $item->id?>">
+                        Sửa
+                    </a>
                     <a href="<?= $baseUrl . "product-remove?id=" . $item->id?>">
                         Xóa
                     </a>

@@ -23,6 +23,16 @@ class ProductController
         include_once './views/product/addForm.php';
     }
 
+    public function editForm(){
+        global $baseUrl;
+        $id = $_GET['id'];
+        
+        $model = Product::where('id', '=', $id)->first();
+        var_dump($model);die;
+        $cates = Category::all();
+        include_once './views/product/addForm.php';
+    }
+
     public function saveAdd(){
         $model = new Product();
         $model->name= $_POST['name'];
