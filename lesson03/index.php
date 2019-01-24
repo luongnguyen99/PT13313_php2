@@ -33,6 +33,10 @@ switch($url){
         $ctr = new ProductController();
         echo $ctr->saveAdd();
         break;
+    case 'product-save-edit':
+        $ctr = new ProductController();
+        echo $ctr->saveEdit();
+        break;
     default:
         echo "404 notfound!";
         break;

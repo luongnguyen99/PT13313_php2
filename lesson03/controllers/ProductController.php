@@ -28,20 +28,15 @@ class ProductController
         $id = $_GET['id'];
         
         $model = Product::find($id);
-        var_dump($model);die;
         $cates = Category::all();
-        include_once './views/product/addForm.php';
+        include_once './views/product/editForm.php';
     }
 
     public function saveAdd(){
         $model = new Product();
-        $model->name= $_POST['name'];
-        $model->cate_id= $_POST['cate_id'];
-        $model->price= $_POST['price'];
-        $model->star= $_POST['star'];
-        $model->views= $_POST['views'];
-        $model->short_desc= $_POST['short_desc'];
-        $model->detail= $_POST['detail'];
+        foreach($_POST as $key => $val){
+            $model->{$key} = $val;
+        }
         $image = $_FILES['image'];
         // upload ảnh
         if($image['size'] > 0){
@@ -49,20 +44,51 @@ class ProductController
             move_uploaded_file($image['tmp_name'], "public/" .$filename);
             $model->image = $filename;
         }
+        $colQuery = "";
+        $valQuery = "";
+        foreach($model->cols as $co){
+            $colQuery .= "$co, ";
+            $valQuery .= "'". $model->{$co} ."', ";
+        }
+
+        $colQuery = rtrim($colQuery, ", ");
+        $valQuery = rtrim($valQuery, ", ");
         
         $model->queryBuilder =  "insert into " . $model->table 
-                    . " (name, cate_id, price, star, views, short_desc, detail, image)"
+                    . " ($colQuery)"
                     . " values "
-                    . " ( 
-                        '$model->name',
-                        '$model->cate_id',
-                        '$model->price',
-                        '$model->star',
-                        '$model->views',
-                        '$model->short_desc',
-                        '$model->detail',
-                        '$model->image'
-                    )";
+                    . " ( $valQuery )";
+
+        // var_dump($model->queryBuilder);die;
+        $model->exeQuery();
+        header('location: ./');
+        
+    }
+
+    public function saveEdit(){
+        $model = Product::find($_POST['id']);
+        foreach($_POST as $key => $val){
+            $model->{$key} = $val;
+        }
+
+        $image = $_FILES['image'];
+        // upload ảnh
+        if($image['size'] > 0){
+            $filename = "images/products/" . uniqid() . "-" . $image['name'];
+            move_uploaded_file($image['tmp_name'], "public/" .$filename);
+            $model->image = $filename;
+        }
+
+        
+        $setQuery = "";
+        foreach($model->cols as $co){
+            $setQuery .= $co . " = '" . $model->{$co} . "', ";
+        }
+        $setQuery = rtrim($setQuery, ", ");
+
+        $model->queryBuilder =  "update " . $model->table 
+                    . " set $setQuery"
+                    . " where id = " . $model->id;
         $model->exeQuery();
         header('location: ./');
         
