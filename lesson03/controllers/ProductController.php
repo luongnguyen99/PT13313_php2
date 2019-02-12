@@ -33,10 +33,45 @@ class ProductController
     }
 
     public function saveAdd(){
+        global $baseUrl;
         $model = new Product();
         foreach($_POST as $key => $val){
             $model->{$key} = $val;
         }
+
+        // validate
+        $err = false;
+        $namerr = "";
+        $priceerr = "";
+        if(strlen($model->name) == 0 ){
+            $err = true;
+            $nameerr = "Nhập tên sản phẩm!";
+        } else if(strlen($model->name) > 191){
+            $err = true;
+            $nameerr = "Tên sản phẩm không vượt quá 191 ký tự!";
+        }
+
+        // check trùng tên
+        $countProduct = Product::where('name', '=', $model->name)->get();
+        if(count($countProduct) > 0){
+            $err = true;
+            $nameerr = "Tên sản phẩm đã tồn tại, hãy nhập tên khác!";
+        }
+
+        //kiem tra price
+        if($model->price < 0 ){
+            $err = true;
+            $priceerr = "Giá sản phẩm phải là số nguyên dương!";
+        }
+
+
+
+        // neu phat hien loi 
+        if($err){
+            header("location: ./product-add?nameerr=$nameerr&priceerr=$priceerr");
+            die;
+        }
+
         $image = $_FILES['image'];
         // upload ảnh
         if($image['size'] > 0){

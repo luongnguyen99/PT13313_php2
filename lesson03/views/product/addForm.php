@@ -17,6 +17,9 @@
                     <div class="form-group">
                         <label for="">Tên sp</label>
                         <input type="text" name="name" id="" class="form-control">
+                        <?php if(isset($_GET['nameerr'])):?>
+                            <span class="text-danger"><?= $_GET['nameerr'] ?></span>
+                        <?php endif?>
                     </div>
                     <div class="form-group">
                         <label for="">Danh mục</label>
@@ -29,6 +32,9 @@
                     <div class="form-group">
                         <label for="">Giá sp</label>
                         <input type="number" name="price" id="" class="form-control">
+                        <?php if(isset($_GET['priceerr'])):?>
+                            <span class="text-danger"><?= $_GET['priceerr'] ?></span>
+                        <?php endif?>
                     </div>
                     <div class="form-group">
                         <label for="">Sao đánh giá sp</label>
