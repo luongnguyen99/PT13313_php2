@@ -73,5 +73,36 @@
     </div>
     <script src="plugins/jquery/jquery.min.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/jquery-validate/jquery.validate.min.js"></script>
+    <script src="plugins/jquery-validate/additional-methods.min.js"></script>
+    <style>
+        label.error{
+            color: red;
+        }
+    </style>
+    <script>
+        $('form').validate({
+            rules: {
+                name: {
+                    required: true,
+                    maxlength: 191
+                },
+                price: {
+                    required: true,
+                    min: 0,
+                    max: 9999999
+                },
+                image: {
+                    accept: "image/*"
+                }
+            },
+            messages: {
+                name: {
+                    required: 'Nhập tên sản phẩm',
+                    maxlength: "Độ dài tên sản phẩm không vượt quá 191 ký tự"
+                }
+            }
+        })
+    </script>
 </body>
 </html>
