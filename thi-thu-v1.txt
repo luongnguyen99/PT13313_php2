@@ -1,0 +1,32 @@
+Dựng cấu trúc hệ thống theo mô hình mvc để thực hiện quản lý bảng
+trong cơ sở dữ liệu sau:
+
+rooms
+id int pk ai
+name varchar 255
+price decimal 10, 2
+floor int
+detail text
+image varchar
+reservation_date date
+maximum_people int
+status int
+
+Thực hiện hiển thị danh sách các phòng
+Thực hiện thêm 1 phòng mới (có upload ảnh - validate dữ liệu theo db)
+Thực hiện cập nhật 1 phòng (có upload ảnh - validate dữ liệu theo db)
+Thực hiện xóa 1 phòng
+
+*** Validate ***
+name: required, max ký tự 255, tên phòng không được trùng nhau
+price: required, không được nhỏ hơn 0, max 99999, là số
+floor: required, là số, không được nhỏ hơn 0
+image: required với tạo mới, không required với update, phải là định dạng ảnh
+reservation_date: không bắt buộc nhập, tuy nhiên nếu nhập thì phải đúng format date
+maximum_people: giá trị mặc định bằng 1, min = 0, max = 4
+status sẽ phải chọn 1 trong các giá trị:
+1 - đang trống
+2 - đã đặt trước 
+3 - đang dọn phòng
+4 - đã thanh toán
+-1 - đã hủy phòng
